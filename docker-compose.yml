@@ -26,7 +26,7 @@ services:
 
   alerts_center_django:
     build: .
-    links: mysql
+    links: alerts_center_mysql
     environment:
       - SERVICE_HOST=
       - DJANGO_PROFILE=production
@@ -34,7 +34,7 @@ services:
       - DB_NAME=
       - DB_USER=
       - DB_PASSWORD=
-      - CELERY_BROKER_DB_HOST=
+      - CELERY_BROKER_DB_HOST=alerts_center_mysql
       - CELERY_BROKER_DB_PORT=
       - CELERY_BROKER_DB_PASSWORD=
     ports:
@@ -45,14 +45,14 @@ services:
 
   alerts_center_celery:
     build: .
-    links: redis
+    links: alerts_center_redis
     environment:
       - DJANGO_PROFILE=production
       - DB_HOST=
       - DB_NAME=
       - DB_USER=
       - DB_PASSWORD=
-      - CELERY_BROKER_DB_HOST=
+      - CELERY_BROKER_DB_HOST=alerts_center_redis
       - CELERY_BROKER_DB_PORT=
       - CELERY_BROKER_DB_PASSWORD=
     command: run_celery
