@@ -6,7 +6,7 @@ from celery.utils.log import get_task_logger
 import os
 
 # 设置django settings模块，参考manage.py
-profile = os.environ.get('PROFILE')  # 需配置环境变量，设置使用local还是production的配置
+profile = os.environ.get('DJANGO_PROFILE')  # 需配置环境变量，设置使用local还是production的配置
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'alerts_center.settings.{}'.format(profile))
 
 # 初始化app
