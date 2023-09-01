@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 
 services:
   alerts_center_mysql:
@@ -42,8 +42,8 @@ services:
     ports:
       - "9988:9009"
     depends_on:
-      - mysql
-      - redis
+      - alerts_center_mysql
+      - alerts_center_redis
 
   alerts_center_celery:
     build: .
