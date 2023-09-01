@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN chmod +x /alerts_center/wait-for-it.sh
 # 执行启动脚本
 ENTRYPOINT ["/bin/bash", "/alerts_center/run.sh"]
-CMD ["run_django"]
+#CMD ["run_django"]
