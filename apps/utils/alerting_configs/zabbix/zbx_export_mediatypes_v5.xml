@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2023-06-27T08:40:01Z</date>
+    <media_types>
+        <media_type>
+            <name>告警中心-主机</name>
+            <type>SCRIPT</type>
+            <script_name>zabbix_alert_sending.py</script_name>
+            <parameters>
+                <parameter>{ALERT.MESSAGE}</parameter>
+                <parameter>{ALERT.SUBJECT}</parameter>
+            </parameters>
+            <message_templates>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>PROBLEM</operation_mode>
+                    <subject>主机</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.TIME}&quot;,&#13;
+        &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+        &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+        &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>RECOVERY</operation_mode>
+                    <subject>主机</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.RECOVERY.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.RECOVERY.TIME}&quot;,&#13;
+    &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+    &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+    &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+            </message_templates>
+        </media_type>
+        <media_type>
+            <name>告警中心-数据库</name>
+            <type>SCRIPT</type>
+            <script_name>zabbix_alert_sending.py</script_name>
+            <parameters>
+                <parameter>{ALERT.MESSAGE}</parameter>
+                <parameter>{ALERT.SUBJECT}</parameter>
+            </parameters>
+            <message_templates>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>PROBLEM</operation_mode>
+                    <subject>数据库</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.TIME}&quot;,&#13;
+        &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+        &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+        &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>RECOVERY</operation_mode>
+                    <subject>数据库</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.RECOVERY.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.RECOVERY.TIME}&quot;,&#13;
+    &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+    &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+    &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+            </message_templates>
+        </media_type>
+        <media_type>
+            <name>告警中心-网络</name>
+            <type>SCRIPT</type>
+            <script_name>zabbix_alert_sending.py</script_name>
+            <parameters>
+                <parameter>{ALERT.MESSAGE}</parameter>
+                <parameter>{ALERT.SUBJECT}</parameter>
+            </parameters>
+            <message_templates>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>PROBLEM</operation_mode>
+                    <subject>网络</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.TIME}&quot;,&#13;
+        &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+        &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+        &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+                <message_template>
+                    <event_source>TRIGGERS</event_source>
+                    <operation_mode>RECOVERY</operation_mode>
+                    <subject>网络</subject>
+                    <message>{&#13;
+	&quot;alert_id&quot;: &quot;{EVENT.ID}&quot;,&#13;
+	&quot;alert_content&quot;: &quot;{TRIGGER.NAME}&quot;,&#13;
+	&quot;alert_level&quot;: &quot;{TRIGGER.NSEVERITY}&quot;,&#13;
+	&quot;trigger_status&quot;: &quot;{TRIGGER.VALUE}&quot;,&#13;
+	&quot;alert_object&quot;: &quot;{HOST.HOST1}&quot;,&#13;
+	&quot;alert_object_ip&quot;: &quot;{HOST.IP}&quot;,&#13;
+	&quot;alert_object_groups&quot;: &quot;{TRIGGER.HOSTGROUP.NAME}&quot;,&#13;
+	&quot;event_date&quot;: &quot;{EVENT.RECOVERY.DATE}&quot;,&#13;
+	&quot;event_clock&quot;: &quot;{EVENT.RECOVERY.TIME}&quot;,&#13;
+    &quot;latest_value&quot;: &quot;{ITEM.VALUE}&quot;,&#13;
+    &quot;alert_object_label&quot;: &quot;{EVENT.TAGS}&quot;,&#13;
+    &quot;monitor_template&quot;: &quot;{TRIGGER.TEMPLATE.NAME}&quot;&#13;
+}</message>
+                </message_template>
+            </message_templates>
+        </media_type>
+    </media_types>
+</zabbix_export>

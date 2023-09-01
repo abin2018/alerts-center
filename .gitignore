@@ -1,0 +1,6 @@
+/db.sqlite3
+/*/settings/local.py
+*__pycache__*
+/.idea/
+*.log
+*.zip

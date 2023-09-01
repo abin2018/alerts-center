@@ -1,0 +1,142 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-06-27T08:37:02Z'
+  media_types:
+    -
+      name: 告警中心-主机
+      type: SCRIPT
+      script_name: zabbix_alert_sending.py
+      parameters:
+        - '{ALERT.MESSAGE}'
+        - '{ALERT.SUBJECT}'
+      message_templates:
+        -
+          event_source: TRIGGERS
+          operation_mode: PROBLEM
+          subject: 主机
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.DATE}",
+            	"event_clock": "{EVENT.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
+        -
+          event_source: TRIGGERS
+          operation_mode: RECOVERY
+          subject: 主机
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.RECOVERY.DATE}",
+            	"event_clock": "{EVENT.RECOVERY.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
+    -
+      name: 告警中心-数据库
+      type: SCRIPT
+      script_name: zabbix_alert_sending.py
+      parameters:
+        - '{ALERT.MESSAGE}'
+        - '{ALERT.SUBJECT}'
+      message_templates:
+        -
+          event_source: TRIGGERS
+          operation_mode: PROBLEM
+          subject: 数据库
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.DATE}",
+            	"event_clock": "{EVENT.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
+        -
+          event_source: TRIGGERS
+          operation_mode: RECOVERY
+          subject: 数据库
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.RECOVERY.DATE}",
+            	"event_clock": "{EVENT.RECOVERY.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
+    -
+      name: 告警中心-网络
+      type: SCRIPT
+      script_name: zabbix_alert_sending.py
+      parameters:
+        - '{ALERT.MESSAGE}'
+        - '{ALERT.SUBJECT}'
+      message_templates:
+        -
+          event_source: TRIGGERS
+          operation_mode: PROBLEM
+          subject: 网络
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.DATE}",
+            	"event_clock": "{EVENT.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
+        -
+          event_source: TRIGGERS
+          operation_mode: RECOVERY
+          subject: 网络
+          message: |
+            {
+            	"alert_id": "{EVENT.ID}",
+            	"alert_content": "{TRIGGER.NAME}",
+            	"alert_level": "{TRIGGER.NSEVERITY}",
+            	"trigger_status": "{TRIGGER.VALUE}",
+            	"alert_object": "{HOST.HOST1}",
+            	"alert_object_ip": "{HOST.IP}",
+            	"alert_object_groups": "{TRIGGER.HOSTGROUP.NAME}",
+            	"event_date": "{EVENT.RECOVERY.DATE}",
+            	"event_clock": "{EVENT.RECOVERY.TIME}",
+                "latest_value": "{ITEM.VALUE}",
+                "alert_object_label": "{EVENT.TAGS}",
+                "monitor_template": "{TRIGGER.TEMPLATE.NAME}"
+            }
