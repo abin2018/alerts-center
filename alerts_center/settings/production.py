@@ -22,7 +22,8 @@ CELERY_BROKER_DB_PASSWORD = os.environ.get('CELERY_BROKER_DB_PASSWORD')
 CELERY_BROKER_DB_NUMBER = os.environ.get('CELERY_BROKER_DB_NUMBER', 0)
 
 # 线上有可能需要修改此文件，否则无法通过IP或域名访问访问，若使用Nginx转发则不需要
-ALLOWED_HOSTS = ['127.0.0.1']
+SERVICE_HOST = os.environ.get('SERVICE_HOST', '127.0.0.1')
+ALLOWED_HOSTS = [SERVICE_HOST]  # 生产环境保持默认为空即可（一般使用nginx做反向代理），测试环境可配置本地IP或域名
 
 # 日志文件目录
 LOGS_DIR = 'logs'

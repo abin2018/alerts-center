@@ -1,0 +1,62 @@
+version: '1'
+
+services:
+  alerts_center_mysql:
+    image: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    expose:
+      - "3306"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=
+      - MYSQL_USER=
+      - MYSQL_PASSWORD=
+
+  alerts_center_redis:
+    image: redis
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ./redis/redis.conf:/etc/redis.conf
+      - ./redis/data/:/data
+    expose:
+      - "6379"
+    restart: always
+
+  alerts_center_django:
+    build: .
+    links: mysql
+    environment:
+      - SERVICE_HOST=
+      - DJANGO_PROFILE=production
+      - DB_HOST=
+      - DB_NAME=
+      - DB_USER=
+      - DB_PASSWORD=
+      - CELERY_BROKER_DB_HOST=
+      - CELERY_BROKER_DB_PORT=
+      - CELERY_BROKER_DB_PASSWORD=
+    ports:
+      - "9988:9009"
+    depends_on:
+      - mysql
+      - redis
+
+  alerts_center_celery:
+    build: .
+    links: redis
+    environment:
+      - DJANGO_PROFILE=production
+      - DB_HOST=
+      - DB_NAME=
+      - DB_USER=
+      - DB_PASSWORD=
+      - CELERY_BROKER_DB_HOST=
+      - CELERY_BROKER_DB_PORT=
+      - CELERY_BROKER_DB_PASSWORD=
+    command: run_celery
+    depends_on:
+      - alerts_center_mysql
+      - alerts_center_redis
+      - alerts_center_django
