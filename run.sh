@@ -7,6 +7,9 @@ set -o nounset
 # 管道中只要有一个子命令失败则退出
 set -o pipefail
 
+/bin/bash /alerts_center/wait-for-it.sh -q -t 30 alerts_center_mysql:3306
+/bin/bash /alerts_center/wait-for-it.sh -q -t 30 alerts_center_redis:6379
+
 cmd=$1
 
 if [ $cmd -eq "run_celery" ] ; then
