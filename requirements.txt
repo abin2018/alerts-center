@@ -1,0 +1,14 @@
+django
+django-celery-beat
+django-celery-results
+django-multiselectfield
+django-simpleui
+django-smart-selects
+djangorestframework
+celery
+IPy
+Jinja2
+mysqlclient
+redis
+requests
+uwsgi

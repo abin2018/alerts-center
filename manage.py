@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    profile = os.environ.get('PROFILE')
+    profile = os.environ.get('DJANGO_PROFILE', 'production')
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'alerts_center.settings.{}'.format(profile))
     try:
         from django.core.management import execute_from_command_line
