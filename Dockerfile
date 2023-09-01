@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 # 对外暴露端口
 #EXPOSE 9009
 # 执行启动脚本
-ENTRYPOINT ["/bin/bash", "/cmdb/run.sh"]
+ENTRYPOINT ["/bin/bash", "/alerts_center/run.sh"]
 CMD ["run_django"]
