@@ -7,18 +7,18 @@ set -o nounset
 # 管道中只要有一个子命令失败则退出
 set -o pipefail
 
-/bin/bash /alerts_center/wait-for-it.sh -q -t 30 alerts_center_mysql:3306
-/bin/bash /alerts_center/wait-for-it.sh -q -t 30 alerts_center_redis:6379
+/bin/bash /alerts_center/wait-for-it.sh -t 100 alerts_center_mysql:3306 || { echo "3306 connect fail"; exit 2; }
+/bin/bash /alerts_center/wait-for-it.sh -t 100 alerts_center_redis:6379 || { echo "6379 connect fail"; exit 2; }
 
 cmd=$1
 
-if [ $cmd -eq "run_celery" ] ; then
+if [ $cmd == "run_celery" ] ; then
   celery -A alerts_center worker -l INFO --beat
 else
   # 迁移数据库
   python manage.py migrate
   # 收集静态文件
-  python manage.py collectstatic
+  python manage.py collectstatic --noinput
   # 启动uwsgi
   uwsgi --http :9009 \
         --enable-threads \
