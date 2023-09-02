@@ -7,7 +7,6 @@ services:
       - ./data/mysql:/var/lib/mysql
     expose:
       - "3306"
-    restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=p?juqS0Q.3#e
       - MYSQL_DATABASE=alerts
@@ -22,7 +21,6 @@ services:
       - ./data/redis/data/:/data
     expose:
       - "6379"
-    restart: always
 
   alerts_center_django:
     build: .
