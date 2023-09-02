@@ -9,10 +9,10 @@ services:
       - "3306"
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_DATABASE=
-      - MYSQL_USER=
-      - MYSQL_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=p?juqS0Q.3#e
+      - MYSQL_DATABASE=alerts
+      - MYSQL_USER=alerts
+      - MYSQL_PASSWORD=p?juqS0Q.3#e
 
   alerts_center_redis:
     image: redis
@@ -30,16 +30,16 @@ services:
       - alerts_center_mysql:alerts_center_mysql
       - alerts_center_redis:alerts_center_redis
     environment:
-      - SERVICE_HOST=
-      - SECRET_KEY=
+      - SERVICE_HOST=127.0.0.1
+      - SECRET_KEY=django-insecure-61bfvkzts-cj%qj9p5tt*b(5kp9ca2quvv&i)gm-1=oonbabj6
       - DJANGO_PROFILE=production
       - DB_HOST=alerts_center_mysql
-      - DB_NAME=
-      - DB_USER=
-      - DB_PASSWORD=
+      - DB_NAME=alerts
+      - DB_USER=alerts
+      - DB_PASSWORD=p?juqS0Q.3#e
       - CELERY_BROKER_DB_HOST=alerts_center_redis
-      - CELERY_BROKER_DB_PORT=
-      - CELERY_BROKER_DB_PASSWORD=
+      - CELERY_BROKER_DB_PORT=6379
+      - CELERY_BROKER_DB_PASSWORD=DcispVlX&g
     ports:
       - "9988:9009"
     depends_on:
@@ -54,12 +54,12 @@ services:
     environment:
       - DJANGO_PROFILE=production
       - DB_HOST=alerts_center_mysql
-      - DB_NAME=
-      - DB_USER=
-      - DB_PASSWORD=
+      - DB_NAME=alerts
+      - DB_USER=alerts
+      - DB_PASSWORD=p?juqS0Q.3#e
       - CELERY_BROKER_DB_HOST=alerts_center_redis
-      - CELERY_BROKER_DB_PORT=
-      - CELERY_BROKER_DB_PASSWORD=
+      - CELERY_BROKER_DB_PORT=6379
+      - CELERY_BROKER_DB_PASSWORD=DcispVlX&g
     command: run_celery
     depends_on:
       - alerts_center_mysql
