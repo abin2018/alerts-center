@@ -21,6 +21,11 @@ else
   python manage.py migrate
   # 收集静态文件
   python manage.py collectstatic --noinput
+  # 生成内置配置
+  echo "生成内置配置..."
+  python manage.py init_meta_data
+  python manage.py init_alert_template
+  python manage.py init_period_task
   # 启动uwsgi
   uwsgi --http :9009 \
         --enable-threads \
