@@ -51,6 +51,7 @@ services:
     links:
       - alerts_center_mysql:alerts_center_mysql
       - alerts_center_redis:alerts_center_redis
+      - alerts_center_django:alerts_center_django
     environment:
       - DJANGO_PROFILE=production
       - DB_HOST=alerts_center_mysql
