@@ -38,6 +38,9 @@ services:
       - CELERY_BROKER_DB_HOST
       - CELERY_BROKER_DB_PORT
       - CELERY_BROKER_DB_PASSWORD
+      - DJANGO_SUPERUSER_USERNAME
+      - DJANGO_SUPERUSER_PASSWORD
+      - DJANGO_SUPERUSER_EMAIL
     ports:
       - "9988:9009"
     depends_on:
