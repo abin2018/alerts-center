@@ -26,6 +26,14 @@ else
   python manage.py init_meta_data
   python manage.py init_alert_template
   python manage.py init_period_task
+  # 初始化superuser
+  if [ -f .superuser_created ] ; then
+    echo "Superuser already created."
+  else
+    python manage.py createsuperuser --noinput
+    echo "Superuser created!"
+    touch .superuser_created
+  fi
   # 启动uwsgi
   uwsgi --http :9009 \
         --enable-threads \
