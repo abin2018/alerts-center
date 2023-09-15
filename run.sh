@@ -15,7 +15,7 @@ cmd=$1
 if [ $cmd == "run_celery" ] ; then
   # 等待migrate执行完成，否则会报错找不到定时任务相关的表
   /bin/bash /alerts_center/wait-for-it.sh -t 100 alerts_center_django:9009 || { echo "9009 connect fail"; exit 2; }
-  celery -A alerts_center worker -l INFO --beat
+  exec celery -A alerts_center worker -l INFO --beat
 else
   # 迁移数据库
   python manage.py migrate
@@ -35,7 +35,7 @@ else
     touch .superuser_created
   fi
   # 启动uwsgi
-  uwsgi --http :9009 \
+  exec uwsgi --http :9009 \
         --enable-threads \
         --chdir /alerts_center/ \
         --module alerts_center.wsgi \
