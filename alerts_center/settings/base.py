@@ -150,6 +150,7 @@ SIMPLEUI_STATIC_OFFLINE = True
 SIMPLEUI_HOME_INFO = False
 SIMPLEUI_ANALYSIS = False
 SIMPLEUI_HOME_ICON = 'fa fa-eye'
+SIMPLEUI_LOGO = '/static/logo.png'
 SIMPLEUI_CONFIG = {
     # 是否使用系统默认菜单，自定义菜单时建议关闭。
     'system_keep': False,
