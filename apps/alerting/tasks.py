@@ -83,7 +83,7 @@ def process_alert_inhibition(alert_data):
     return False, None
 
 
-@app.task(name='清理过期的告警抑制规则', shared=False, lazy=False, base=CustomTask)
+@app.task(name='清理过期的告警抑制规则', shared=False, lazy=False, base=CustomTask, ignore_result=True)
 def clean_alert_inhibition_expired():
     inhibition_objects = AlertInhibition.objects.all()
     for inhibition_object in inhibition_objects:
