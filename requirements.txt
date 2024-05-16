@@ -1,14 +1,14 @@
-django
+django == 4.2.11
 django-celery-beat
 django-celery-results
 django-multiselectfield
-django-simpleui
-django-smart-selects
-djangorestframework
+django-simpleui == 2023.8.28
+django-smart-selects == 1.6.0
+djangorestframework == 3.14.0
 celery
 IPy
 Jinja2
-mysqlclient
+mysqlclient == 2.2.0
 redis
-requests
-uwsgi
+requests == 2.31.0
+uwsgi == 2.0.23
